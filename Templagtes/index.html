@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Game Server Monitor</title>
-</head>
-<body>
-    <h1>Daftar Server</h1>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Nama Server</th>
-            <th>IP</th>
-            <th>Status</th>
-        </tr>
-        {% for server in servers %}
-        <tr>
-            <td>{{ server[0] }}</td>
-            <td>{{ server[1] }}</td>
-            <td>{{ server[2] }}</td>
-            <td>{{ server[3] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+<h1>Game Server Monitoring</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Server</th>
+        <th>Game</th>
+        <th>IP</th>
+        <th>Status</th>
+    </tr>
+
+    {% for s in servers %}
+    <tr>
+        <td>{{ s['id_server'] }}</td>
+        <td>{{ s['nama_server'] }}</td>
+        <td>{{ s['nama_game'] }}</td>
+        <td>{{ s['ip_address'] }}</td>
+        <td>{{ s['status'] }}</td>
+    </tr>
+    {% endfor %}
+</table>

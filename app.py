@@ -1,16 +1,16 @@
-from flask import Flask, render_template
-from db import get_connection
-
-app = Flask(__name__)
-
 @app.route("/")
 def index():
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT id_server, nama_server, ip_address, status FROM server")
+
+    cursor.execute("""
+        SELECT s.id_server, s.nama_server, g.nama_game, 
+               s.ip_address, s.status
+        FROM server s
+        JOIN game g ON s.id_game = g.id_game
+    """)
+
     servers = cursor.fetchall()
     conn.close()
-    return render_template("index.html", servers=servers)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    return render_template("index.html", servers=servers)
