@@ -1,3 +1,8 @@
+from flask import Flask, render_template
+from Database.db import get_connection
+
+app = Flask(__name__)   # WAJIB ADA SEBELUM @app.route
+
 @app.route("/")
 def index():
     conn = get_connection()
@@ -14,3 +19,6 @@ def index():
     conn.close()
 
     return render_template("index.html", servers=servers)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
