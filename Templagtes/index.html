@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Server Monitor</title>
+</head>
+<body>
+    <h1>Daftar Server</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nama Server</th>
+            <th>IP</th>
+            <th>Status</th>
+        </tr>
+        {% for server in servers %}
+        <tr>
+            <td>{{ server[0] }}</td>
+            <td>{{ server[1] }}</td>
+            <td>{{ server[2] }}</td>
+            <td>{{ server[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
